@@ -43,6 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97e6717858119a84b92cc5086d403fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonPrefab: {fileID: 5398179634051647995, guid: a6e99a4d5493b544f829bc900ec93787,
+  buttonPrefab: {fileID: 3232918202475345454, guid: 9e67789bcce804f4186bb1a75dd15581,
     type: 3}
   selectedButton: {fileID: 0}
