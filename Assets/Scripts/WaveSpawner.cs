@@ -4,11 +4,13 @@ using UnityEngine.UI;
 
 public class WaveSpawner : MonoBehaviour
 {
-    public Transform enemyPrefab;
+    public GameObject enemyPrefab;
     public float waveSpawnTimer = 5.5f;
     public float countDown = 2f;
     private int waveNumber = 0;
-   // public Text countDownText;
+    public Monsters monster;
+    // public Text countDownText;
+   
     private void Update()
     {
         if (waveNumber == 5)
@@ -29,7 +31,10 @@ public class WaveSpawner : MonoBehaviour
         //Debug.Log("Wave Incoming");
         for (int i = 0; i < waveNumber; i++)
         {
-            Instantiate(enemyPrefab);
+            GameObject enemyGO =Instantiate(enemyPrefab);
+            enemyGO.GetComponent<Enemy>().monsterinfo=monster;
+            
+            
             yield return new WaitForSeconds(0.5f);
         }
     }

@@ -1,17 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-    public Transform target;
-    public float EnemySpeed = 10f;
-    public float Health = 100f;
-    public GameObject enemyDestroyEffect;
+    [Header ("Attributes")]
+    private float EnemySpeed;
+    private float Health;
+    public float MaxHealth;
+    public GameObject enemyDeathEffect;
+
+    public Image HealthBar;
+    private Transform target;
+    public Monsters monsterinfo;
     private int wayPointIndex = 0;
+    //public WaveSpawner waveSpawner;
+
+    /*private void Awake()
+    {
+        monsterinfo = waveSpawner.monster;
+    }*/
     private void Start()
     {
+        
         target = Waypoints.points[wayPointIndex];
+        setAttributes();
+        
     }
     private void Update()
     {
@@ -21,6 +36,13 @@ public class Enemy : MonoBehaviour
         {
             nextWayPointIndex();
         }
+    }
+    void setAttributes()
+    {
+        MaxHealth = monsterinfo.health;
+        enemyDeathEffect = monsterinfo.DeathEffect;
+        EnemySpeed = monsterinfo.MovementSpeed;
+        Health = MaxHealth;
     }
     void nextWayPointIndex()
     {
@@ -38,9 +60,10 @@ public class Enemy : MonoBehaviour
     public void takingDamage(float damage)
     {
         Health -= damage;
+        HealthBar.fillAmount = Health / MaxHealth;
         if (Health <= 0)
         {
-            Instantiate(enemyDestroyEffect, transform.position, transform.rotation);
+            Instantiate(enemyDeathEffect, transform.position, transform.rotation);
             Destroy(gameObject);
         }
     }
