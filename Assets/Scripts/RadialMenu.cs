@@ -21,6 +21,7 @@ public class RadialMenu : MonoBehaviour
             float ypos = Mathf.Cos(theta);
             newbutton.transform.localPosition = new Vector3(xpos, ypos, 0f)*50f;
             newbutton.myMenu = this;
+            newbutton.buttonIndex = i;
             newbutton.towerPrefab = obj.arrayOfButtons[i].tower;
         }
         

@@ -5,17 +5,25 @@ using UnityEngine;
 public class Turret : MonoBehaviour
 {
     [Header("Attributes")]
+    public float damage = 50f;
     public float Range = 15f;
     public float rotationSpeed = 1f;
     public float fireRate = 2f;
     private float frCountdown = 0f;
+    public int igniteChance;
+    public int soakChance;
+    public int stunChance;
+    public int shockChance;
+    public int tangleChance;
+    public int KnockbackChance;
+
     [Header("Unity Settings")]
     public string enemytag = "Enemy";
     public GameObject bulletPrefab;
     public Transform spawnPoint;
     
     public GameObject target = null;
-    public GameObject partToRotate;
+    public GameObject partToRotate = null;
 
     private Renderer rend;
     public Color highLightColor=Color.red;
@@ -25,7 +33,11 @@ public class Turret : MonoBehaviour
     {
         InvokeRepeating("targetSelector", 0f, 0.2f);
         
+        
     }
+    
+        
+    
     //code for range generation
     private void OnDrawGizmosSelected()
     {
@@ -54,10 +66,9 @@ public class Turret : MonoBehaviour
                 {
                     if (Vector3.Distance(target.transform.position, transform.position) >= Range)
                     {
-                        //Debug.Log("target is changed to"+shortestDistance);
+                        
                         target = nearestEnemy;
-                        /*rend = target.GetComponent<Renderer>();
-                        rend.material.color = highLightColor;*/
+                        
                     }
                     else
                         return;
@@ -71,11 +82,7 @@ public class Turret : MonoBehaviour
             }
             
         }
-       /* float targetDistance = Vector3.Distance(transform.position, target.transform.position);
-        if (targetDistance >= Range)
-        {
-
-        }*/
+       
         
              
     }
@@ -86,8 +93,8 @@ public class Turret : MonoBehaviour
             //Debug.Log("null");
             return;
         }
-            
-        rotateBarrel();
+        if (partToRotate != null)
+            rotateBarrel();
         
         
         if (frCountdown <= 0)
@@ -102,6 +109,15 @@ public class Turret : MonoBehaviour
     {
         GameObject bulletGO=Instantiate(bulletPrefab, spawnPoint.position,spawnPoint.rotation);
         bullet bullet = bulletGO.GetComponent<bullet>();
+        {
+            bullet.damage = this.damage;
+            bullet.igniteChance = igniteChance;
+            bullet.shockChance = shockChance;
+            bullet.soakChance = soakChance;
+            bullet.stunChance = stunChance;
+            bullet.tangleChance = tangleChance;
+            bullet.knockbackChance = KnockbackChance;
+        }
         bullet.Seek(target.transform);
     }
     void rotateBarrel()

@@ -7,7 +7,7 @@ public class capsule : MonoBehaviour
     public class towerButtons
     {
         public Color color;
-        public Sprite sprite;
+        public button sprite;
         public GameObject tower;
     }
     public towerButtons[] arrayOfButtons;

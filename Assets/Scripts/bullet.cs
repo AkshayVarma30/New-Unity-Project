@@ -8,12 +8,61 @@ public class bullet : MonoBehaviour
     public string enemyTag = "Enemy";
     public float damage = 50f;
     public GameObject bulletImpactEffect;
+    public int igniteChance;
+    public int soakChance;
+    public int stunChance;
+    public int shockChance;
+    public int tangleChance;
+    public int knockbackChance;
+
+    private string rolledAilment = null;
+
+
+
     public void Seek(Transform _target)
     {
         target = _target;
     }
-
-    // Update is called once per frame
+    string rollForAilment()
+    {
+        if (igniteChance != 0)
+        {
+            float roll = Random.Range(0.01f, 1f);
+            if (roll <= igniteChance)
+                return "ignited";
+        }
+        if (soakChance != 0)
+        {
+            float roll = Random.Range(0.01f, 1f);
+            if (roll <= soakChance)
+                return "soaked";
+        }
+        if (stunChance != 0)
+        {
+            float roll = Random.Range(0.01f, 1f);
+            if (roll <= stunChance)
+                return "stunned";
+        }
+        if (shockChance != 0)
+        {
+            float roll = Random.Range(0.01f, 1f);
+            if (roll <= shockChance)
+                return "shocked";
+        }
+        if (knockbackChance != 0)
+        {
+            float roll = Random.Range(0.01f, 1f);
+            if (roll <= knockbackChance)
+                return "knockedback";
+        }
+        if (tangleChance != 0)
+        {
+            float roll = Random.Range(0.01f, 1f);
+            if (roll <=tangleChance)
+                return "tangled";
+        }
+        return null;
+    }
     void Update()
     {
         if (target == null)
@@ -47,7 +96,5 @@ public class bullet : MonoBehaviour
     {
         Enemy enemyScr = enemy.GetComponent<Enemy>();
         enemyScr.takingDamage(damage);
-        
-
     }
 }

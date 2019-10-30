@@ -10,17 +10,24 @@ public class Enemy : MonoBehaviour
     private float Health;
     public float MaxHealth;
     public GameObject enemyDeathEffect;
+    public int fireResistance;
+    public int waterResistance;
+    public int lightningResistance;
+    public int earthResistance;
+    public int airResistance;
+    public int natureResistance;
+    public bool canBeIgnited;
+    public bool canBeSoaked;
+    public bool canBeShocked;
+    public bool canBeStunned;
+    public bool canBeknockedback;
+    public bool canBeTangled;
 
     public Image HealthBar;
     private Transform target;
-    public Monsters monsterinfo;
+    public Monster monsterinfo;
     private int wayPointIndex = 0;
-    //public WaveSpawner waveSpawner;
-
-    /*private void Awake()
-    {
-        monsterinfo = waveSpawner.monster;
-    }*/
+   
     private void Start()
     {
         
@@ -40,10 +47,23 @@ public class Enemy : MonoBehaviour
     void setAttributes()
     {
         MaxHealth = monsterinfo.health;
-        enemyDeathEffect = monsterinfo.DeathEffect;
-        EnemySpeed = monsterinfo.MovementSpeed;
+        enemyDeathEffect = monsterinfo.deathEffect;
+        EnemySpeed = monsterinfo.movementSpeed;
         Health = MaxHealth;
-    }
+        gameObject.GetComponent<Renderer>().material.color = monsterinfo.monsterColor;
+        fireResistance = monsterinfo.fireResistance;
+        waterResistance = monsterinfo.waterResistance;
+        lightningResistance = monsterinfo.lightningResistance;
+        earthResistance = monsterinfo.earthResistance;
+        airResistance = monsterinfo.airResistance;
+        natureResistance = monsterinfo.natureResistance;
+        canBeIgnited = monsterinfo.canBeIgnited;
+        canBeSoaked = monsterinfo.canBeSoaked;
+        canBeShocked = monsterinfo.canBeShocked;
+        canBeStunned = monsterinfo.canBeStunned;
+        canBeknockedback = monsterinfo.canBeknockedback;
+        canBeTangled = monsterinfo.canBeTangled;
+}
     void nextWayPointIndex()
     {
         if (wayPointIndex>=Waypoints.points.Length-1)
@@ -59,12 +79,15 @@ public class Enemy : MonoBehaviour
 
     public void takingDamage(float damage)
     {
+        //Debug.Log("Health = " + Health);
+        Debug.Log("damage = "+ damage);
         Health -= damage;
         HealthBar.fillAmount = Health / MaxHealth;
         if (Health <= 0)
         {
-            Instantiate(enemyDeathEffect, transform.position, transform.rotation);
+            GameObject DE=Instantiate(enemyDeathEffect, transform.position, transform.rotation);
             Destroy(gameObject);
+            Destroy(DE, 2f);
         }
     }
 

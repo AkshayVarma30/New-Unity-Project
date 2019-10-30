@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class WaveSpawner : MonoBehaviour
 {
@@ -8,7 +9,8 @@ public class WaveSpawner : MonoBehaviour
     public float waveSpawnTimer = 5.5f;
     public float countDown = 2f;
     private int waveNumber = 0;
-    public Monsters monster;
+    //public Monster monster;
+    public List<Monster> monsters=new List<Monster>();
     // public Text countDownText;
    
     private void Update()
@@ -32,7 +34,7 @@ public class WaveSpawner : MonoBehaviour
         for (int i = 0; i < waveNumber; i++)
         {
             GameObject enemyGO =Instantiate(enemyPrefab);
-            enemyGO.GetComponent<Enemy>().monsterinfo=monster;
+            enemyGO.GetComponent<Enemy>().monsterinfo=monsters[0];
             
             
             yield return new WaitForSeconds(0.5f);

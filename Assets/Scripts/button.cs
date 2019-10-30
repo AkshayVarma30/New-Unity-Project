@@ -7,7 +7,7 @@ public class button : MonoBehaviour, IPointerEnterHandler , IPointerExitHandler
 {
     public Color hoverColor=Color.red;
     public RadialMenu myMenu;
-    public int buttonIndex;
+    public int buttonIndex = 0;
     public GameObject towerPrefab;
 
     public void OnPointerEnter(PointerEventData eventData)
