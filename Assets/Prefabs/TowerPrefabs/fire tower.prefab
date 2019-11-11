@@ -10,8 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3595422632806556609}
   - component: {fileID: 4024314815614063011}
-  - component: {fileID: 639688337518065277}
-  - component: {fileID: 3956028453451537169}
+  - component: {fileID: 6433520449802986151}
   m_Layer: 0
   m_Name: fire tower
   m_TagString: Untagged
@@ -58,36 +57,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 90
   m_CollisionDetection: 0
---- !u!114 &639688337518065277
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 558120954761531858}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 025865c1350a688408a6c03b078c7ea6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 50
-  Range: 15
-  rotationSpeed: 1
-  fireRate: 2
-  igniteChance: 0
-  soakChance: 0
-  stunChance: 0
-  shockChance: 0
-  tangleChance: 0
-  KnockbackChance: 0
-  enemytag: Enemy
-  bulletPrefab: {fileID: 7851101322311974356, guid: 92514a6f8b22d8641aa8b88e14da00b0,
-    type: 3}
-  spawnPoint: {fileID: 2423153581434820370}
-  target: {fileID: 0}
-  partToRotate: {fileID: 0}
-  highLightColor: {r: 1, g: 0, b: 0, a: 1}
---- !u!114 &3956028453451537169
+--- !u!114 &6433520449802986151
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,22 +66,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 558120954761531858}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 606c4564ab793aa458ed2e1b6026a2ae, type: 3}
+  m_Script: {fileID: 11500000, guid: e3b6e6ed6579b2a429f24efdc4289b4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageOverTime: 100
+  damage: 50
   Range: 15
+  rotationSpeed: 1
+  fireRate: 2
   igniteChance: 0
-  soakChance: 0
-  stunChance: 0
-  shockChance: 0
-  tangleChance: 0
-  KnockbackChance: 0
+  noOfProjectiles: 3
   enemytag: Enemy
-  bulletPrefab: {fileID: 7851101322311974356, guid: 92514a6f8b22d8641aa8b88e14da00b0,
+  bulletPrefab: {fileID: 7851101322311974356, guid: e161541a8fdf6ad4ca4cd615d4e1ba00,
     type: 3}
   spawnPoint: {fileID: 2423153581434820370}
-  target: {fileID: 0}
+  partToRotate: {fileID: 0}
   highLightColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &1602154382171134984
 GameObject:

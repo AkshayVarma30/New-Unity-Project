@@ -1,19 +1,16 @@
 ﻿
 using UnityEngine;
 
-public class bullet : MonoBehaviour
+public class waterbullet : MonoBehaviour
 {
     private Transform target;
     public float bulletSpeed = 5f;
     public string enemyTag = "Enemy";
     public float damage = 50f;
-    public GameObject bulletImpactEffect;
-    public int igniteChance;
+    public GameObject bulletImpactEffect = null;
+    public float explosionRadius = 10f;
+   
     public int soakChance;
-    public int stunChance;
-    public int shockChance;
-    public int tangleChance;
-    public int knockbackChance;
 
     private string rolledAilment = null;
 
@@ -25,42 +22,14 @@ public class bullet : MonoBehaviour
     }
     string rollForAilment()
     {
-        if (igniteChance != 0)
-        {
-            float roll = Random.Range(0.01f, 1f);
-            if (roll <= igniteChance)
-                return "ignited";
-        }
+       
         if (soakChance != 0)
         {
             float roll = Random.Range(0.01f, 1f);
             if (roll <= soakChance)
                 return "soaked";
         }
-        if (stunChance != 0)
-        {
-            float roll = Random.Range(0.01f, 1f);
-            if (roll <= stunChance)
-                return "stunned";
-        }
-        if (shockChance != 0)
-        {
-            float roll = Random.Range(0.01f, 1f);
-            if (roll <= shockChance)
-                return "shocked";
-        }
-        if (knockbackChance != 0)
-        {
-            float roll = Random.Range(0.01f, 1f);
-            if (roll <= knockbackChance)
-                return "knockedback";
-        }
-        if (tangleChance != 0)
-        {
-            float roll = Random.Range(0.01f, 1f);
-            if (roll <=tangleChance)
-                return "tangled";
-        }
+        
         return null;
     }
     void Update()
@@ -79,22 +48,51 @@ public class bullet : MonoBehaviour
     {
         Vector3 dir = target.position - transform.position;
         transform.Translate(dir.normalized * bulletSpeed * Time.deltaTime, Space.World);
+        if (Vector3.Distance(target.position, transform.position) <= 0.2f)
+        {
+            hitTarget();
+        }
     }
-    private void OnCollisionEnter(Collision collision)
+   /* private void OnCollisionEnter(Collision collision)
     {
         GameObject collidingObject=collision.gameObject;
         if (collidingObject.tag == enemyTag)
         {
             Destroy(gameObject);
-            Instantiate(bulletImpactEffect, transform.position, transform.rotation);
+            if (bulletImpactEffect != null)
+            {
+                Instantiate(bulletImpactEffect, transform.position, transform.rotation);
+            }
+            
             damageEnemy(collidingObject);
         }
         
         
-    }
+    }*/
     void damageEnemy(GameObject enemy)
     {
         Enemy enemyScr = enemy.GetComponent<Enemy>();
         enemyScr.takingDamage(damage);
+        Destroy(gameObject);
+    }
+
+    void hitTarget()
+    {
+        if (explosionRadius != 0)
+        {
+            Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
+            foreach(Collider item in colliders)
+            {
+                if (item.tag == enemyTag)
+                {
+                    damageEnemy(item.gameObject);
+                }
+            }
+        }
+        else
+        {
+            damageEnemy(target.gameObject);
+        }
     }
 }
+

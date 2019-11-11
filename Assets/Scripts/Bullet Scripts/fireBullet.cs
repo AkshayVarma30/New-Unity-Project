@@ -7,6 +7,7 @@ public class fireBullet : MonoBehaviour
     public float bulletSpeed = 5f;
     public string enemyTag = "Enemy";
     public float damage = 50f;
+    public int igniteChance;
     public GameObject bulletImpactEffect;
     public void Seek(Transform _target)
     {

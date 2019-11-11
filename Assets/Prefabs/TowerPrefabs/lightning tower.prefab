@@ -353,6 +353,7 @@ GameObject:
   - component: {fileID: 1113810822978490197}
   - component: {fileID: -5741776239869981817}
   - component: {fileID: 6817099296066803850}
+  - component: {fileID: -4271817979382551744}
   m_Layer: 0
   m_Name: lightning tower
   m_TagString: Untagged
@@ -386,7 +387,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4120323971034430790}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 025865c1350a688408a6c03b078c7ea6, type: 3}
   m_Name: 
@@ -424,6 +425,30 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 90
   m_CollisionDetection: 0
+--- !u!114 &-4271817979382551744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4120323971034430790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 824b69bc81393b44eab13684fb54fae9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 50
+  Range: 15
+  rotationSpeed: 1
+  fireRate: 2
+  soakChance: 0
+  enemytag: Enemy
+  bulletPrefab: {fileID: 7851101322311974356, guid: c63b902233a66d44e8d6f71dade8b5d7,
+    type: 3}
+  spawnPoint: {fileID: 2900633452957177541}
+  target: {fileID: 0}
+  partToRotate: {fileID: 0}
+  highLightColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &4284487952113572097
 GameObject:
   m_ObjectHideFlags: 0

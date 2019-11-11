@@ -22,8 +22,8 @@ public class AoETurret : MonoBehaviour
     public Transform spawnPoint;
     //public float hitsPerSecond
 
-    public GameObject target = null;
-    List<GameObject> enemiesInRange = new List<GameObject>();
+    //public GameObject target = null;
+    List<GameObject> targets = new List<GameObject>();
 
     private Renderer rend;
     public Color highLightColor = Color.red;
@@ -47,14 +47,14 @@ public class AoETurret : MonoBehaviour
     //code to select the target
     void targetSelector()
     {
-        enemiesInRange.Clear();
+        targets.Clear();
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemytag);
         foreach (GameObject enemy in enemies)
         {
             float enemyDistance = Vector3.Distance(transform.position, enemy.transform.position);
             if (enemyDistance < Range)
             {
-                enemiesInRange.Add(enemy);
+                targets.Add(enemy);
             }
 
         }
@@ -62,9 +62,9 @@ public class AoETurret : MonoBehaviour
     }
     void Update()
     {
-        if (enemiesInRange.Count != 0)
+        if (targets.Count != 0)
         {
-            foreach (GameObject enemy in enemiesInRange)
+            foreach (GameObject enemy in targets)
             {
                //Debug.Log("here");
                 if (enemy == null)
@@ -72,9 +72,9 @@ public class AoETurret : MonoBehaviour
                     return;
                 }
 
-                target = enemy;
+                
                 //Debug.Log(Time.deltaTime);
-                target.GetComponent<Enemy>().takingDamage(damageOverTime * Time.deltaTime); ;
+                enemy.GetComponent<Enemy>().takingDamage(damageOverTime * Time.deltaTime); ;
                 
             }
         }
