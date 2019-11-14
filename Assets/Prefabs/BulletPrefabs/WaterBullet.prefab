@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6894596188695750952}
   - component: {fileID: 2386303963162286489}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: WaterBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,9 +109,5 @@ MonoBehaviour:
   enemyTag: Enemy
   damage: 50
   bulletImpactEffect: {fileID: 0}
-  igniteChance: 0
+  explosionRadius: 5
   soakChance: 0
-  stunChance: 0
-  shockChance: 0
-  tangleChance: 0
-  knockbackChance: 0

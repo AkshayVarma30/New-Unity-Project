@@ -48,31 +48,30 @@ public class waterbullet : MonoBehaviour
     {
         Vector3 dir = target.position - transform.position;
         transform.Translate(dir.normalized * bulletSpeed * Time.deltaTime, Space.World);
-        if (Vector3.Distance(target.position, transform.position) <= 0.2f)
-        {
-            hitTarget();
-        }
+ 
     }
-   /* private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         GameObject collidingObject=collision.gameObject;
         if (collidingObject.tag == enemyTag)
         {
+            
+            hitTarget();
             Destroy(gameObject);
             if (bulletImpactEffect != null)
             {
                 Instantiate(bulletImpactEffect, transform.position, transform.rotation);
             }
             
-            damageEnemy(collidingObject);
+            
         }
         
         
-    }*/
+    }
     void damageEnemy(GameObject enemy)
     {
         Enemy enemyScr = enemy.GetComponent<Enemy>();
-        enemyScr.takingDamage(damage);
+       // enemyScr.takingDamage(damage);
         Destroy(gameObject);
     }
 

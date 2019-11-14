@@ -72,8 +72,8 @@ MonoBehaviour:
   damage: 50
   Range: 15
   rotationSpeed: 1
-  fireRate: 2
-  igniteChance: 0
+  fireRate: 0.5
+  igniteChance: 100
   noOfProjectiles: 3
   enemytag: Enemy
   bulletPrefab: {fileID: 7851101322311974356, guid: e161541a8fdf6ad4ca4cd615d4e1ba00,

@@ -12,8 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b2b9bd261f5efc45a3afc0be3253731, type: 3}
   m_Name: Tanky Monster
   m_EditorClassIdentifier: 
-  health: 150
-  MovementSpeed: 8
+  health: 200
+  movementSpeed: 8
   monsterColor: {r: 0.11373307, g: 0.990566, b: 0.032707386, a: 0}
-  DeathEffect: {fileID: 4893833811417359163, guid: 6470fd4288fb10f469a5f910828b02a0,
-    type: 3}
+  deathEffect: {fileID: 0}
+  fireResistance: 0
+  waterResistance: 0
+  lightningResistance: 0
+  earthResistance: 0
+  airResistance: 0
+  natureResistance: 0
+  canBeIgnited: 1
+  canBeSoaked: 1
+  canBeShocked: 1
+  canBeStunned: 1
+  canBeknockedback: 1
+  canBeTangled: 1

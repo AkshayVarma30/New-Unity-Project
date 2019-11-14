@@ -74,7 +74,7 @@ public class AoETurret : MonoBehaviour
 
                 
                 //Debug.Log(Time.deltaTime);
-                enemy.GetComponent<Enemy>().takingDamage(damageOverTime * Time.deltaTime); ;
+              //  enemy.GetComponent<Enemy>().takingDamage(damageOverTime * Time.deltaTime); ;
                 
             }
         }

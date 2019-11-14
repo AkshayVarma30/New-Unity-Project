@@ -11,7 +11,7 @@ public class FireTower : MonoBehaviour
     public float rotationSpeed = 1f;
     public float fireRate = 2f;
     private float frCountdown = 0f;
-    public int igniteChance;
+    public int igniteChance = 0;
     public int noOfProjectiles = 1;
     /*public int soakChance;
     public int stunChance;
@@ -24,6 +24,7 @@ public class FireTower : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform spawnPoint;
 
+    List<GameObject> enemiesInRange = new List<GameObject>();
     List<GameObject> targets = new List<GameObject>(); 
     //public GameObject target = null;
     public GameObject partToRotate = null;
@@ -103,6 +104,7 @@ public class FireTower : MonoBehaviour
     }*/
     void targetSelector()
     {
+        enemiesInRange.Clear();
         targets.Clear();
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemytag);
         foreach (GameObject enemy in enemies)
@@ -110,11 +112,32 @@ public class FireTower : MonoBehaviour
             float enemyDistance = Vector3.Distance(transform.position, enemy.transform.position);
             if (enemyDistance <= Range)
             {
-                targets.Add(enemy);
+                enemiesInRange.Add(enemy);
+
             }
 
         }
+        for(int i = 0; i < noOfProjectiles; i++)
+        {
+            targets.Add(nearestEnemy());
+        }
+        
+    }
 
+    GameObject nearestEnemy()
+    {
+        GameObject nearestEnemy = null;
+        float shortestDistance = Mathf.Infinity;
+        foreach (GameObject enemy in enemiesInRange)
+        {
+            if (Vector3.Distance(transform.position, enemy.transform.position) < shortestDistance)
+            {
+                nearestEnemy = enemy;
+                shortestDistance= Vector3.Distance(transform.position, enemy.transform.position);
+            }
+        }
+        enemiesInRange.Remove(nearestEnemy);
+        return nearestEnemy;
     }
     void Update()
     {
@@ -137,7 +160,6 @@ public class FireTower : MonoBehaviour
     
     void shoot()
     {
-        int spawnedProjectiles = 0;
        //while (spawnedProjectiles < noOfProjectiles)
        // {
             foreach (GameObject target in targets)
@@ -146,7 +168,7 @@ public class FireTower : MonoBehaviour
                 if (target != null)
                 {
                     GameObject bulletGO = Instantiate(bulletPrefab, spawnPoint.position, spawnPoint.rotation);
-                    spawnedProjectiles++;
+                    
                     fireBullet bullet = bulletGO.GetComponent<fireBullet>();
                     {
                         bullet.damage = this.damage;

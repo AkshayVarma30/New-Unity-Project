@@ -77,7 +77,7 @@ public class bullet : MonoBehaviour
     void damageEnemy(GameObject enemy)
     {
         Enemy enemyScr = enemy.GetComponent<Enemy>();
-        enemyScr.takingDamage(damage);
+       // enemyScr.takingDamage(damage);
     }
 
     void hitTarget()

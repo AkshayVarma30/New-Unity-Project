@@ -87,6 +87,8 @@ GameObject:
   - component: {fileID: 7487441730336796229}
   - component: {fileID: 7666995004030752890}
   - component: {fileID: 114252582042891466}
+  - component: {fileID: 7955056021042797339}
+  - component: {fileID: 3151600891520694342}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -196,13 +198,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d02155c903e37c42bc188b7b8367b8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  EnemySpeed: 0
-  HealthBar: {fileID: 362789354240672992}
+  Health: 0
   MaxHealth: 0
+  enemyDeathEffect: {fileID: 0}
+  fireResistance: 0
+  waterResistance: 0
+  lightningResistance: 0
+  earthResistance: 0
+  airResistance: 0
+  natureResistance: 0
+  canBeIgnited: 0
+  canBeSoaked: 0
+  canBeShocked: 0
+  canBeStunned: 0
+  canBeknockedback: 0
+  canBeTangled: 0
+  isIgnited: 0
+  isSoaked: 0
+  isShocked: 0
+  isStunned: 0
+  isknockedback: 0
+  isTangled: 0
+  HealthBar: {fileID: 362789354240672992}
   monsterinfo: {fileID: 0}
-  enemyDestroyEffect: {fileID: 4893833811417359163, guid: 6470fd4288fb10f469a5f910828b02a0,
+--- !u!114 &7955056021042797339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3712317116331307089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3edf285f52074e4dad0644e81d2a335, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 0}
+  igniteDuration: 0
+  igniteParticleEffect: {fileID: 7291210328039888567, guid: e78ce673410aa284db824ff91e05f220,
     type: 3}
+  igniteDamage: 0
+--- !u!114 &3151600891520694342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3712317116331307089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e280b16caae11064ea015c8eeb58688d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 0}
+  damageType: 
+  damage: 0
 --- !u!1 &3937966675210764600
 GameObject:
   m_ObjectHideFlags: 0
